@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+  <title>Todo app</title>
+</head>
+
+<body>
+  <div class="wrapperDiv">
+    <div class="titleDiv">
+      <h1>TODO</h1>
+      <img src="./images/icon-moon.svg" alt="moon" class="moon">
+    </div>
+
+    <div class="inputDiv">
+      <input type="checkbox" id="checkAll">
+      <label class="roundCheckbox"></label>
+      <input type="text" id="input" placeholder="Create a new todo...">
+    </div>
+
+    <div class="listDiv">
+      <ul id="list">
+        <li class="listItem">
+          <input type="checkbox" class="checkbox">
+          <label class="roundCheckbox"></label>
+          <p class="text">Complete online JavaScript course</p>
+          <img src="./images/icon-cross.svg" alt="cross" class="cross">
+        </li>
+        <li class="listItem">
+          <input type="checkbox" class="checkbox">
+          <label class="roundCheckbox"></label>
+          <p class="text">Complete online JavaScript Notes</p>
+          <img src="./images/icon-cross.svg" alt="cross" class="cross">
+        </li>
+        <li class="listItem">
+          <input type="checkbox" class="checkbox">
+          <label class="roundCheckbox"></label>
+          <p class="text">Practice Frontend Mentor Projects</p>
+          <img src="./images/icon-cross.svg" alt="cross" class="cross">
+        </li>
+      </ul>
+      
+      <div class="btnDiv">
+        <button id="all">0 items left</button>
+        <button id="all">All</button>
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+        <button id="clear">Clear Completed</button>
+      </div>
+    </div>
+
+    <p class="dragParagraph">Drag and drop to reorder list</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

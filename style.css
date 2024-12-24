@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Josefin Sans, sans-serif;
+}
+
+body {
+    background-image: url("./images/bg-desktop-light.jpg");
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapperDiv {
+    width: 540px;
+    margin-top: 100px;
+}
+
+.titleDiv {
+    color: #fff;
+    width: 540px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inputDiv {
+    background-color: #fff;
+    width: 540px;
+    height: 64px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px 24px;
+}
+
+.inputDiv #input {
+    width: 440px;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #333;
+}
+
+.inputDiv #checkAll {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+}
+
+.inputDiv .roundCheckbox {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: solid 1px #E3E4F1;
+    margin-right: 20px;
+}
+
+.inputDiv .roundCheckbox:hover {
+    cursor: pointer;
+}
+
+.checked {
+    background: url("./images/icon-check.svg"), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-position: center;
+    background-repeat: no-repeat;
+    border: hidden !important;
+}
+
+.listDiv {
+    background-color: #fff;
+    width: 540px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.listDiv .listItem {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+    padding: 20px 24px;
+    border-bottom: solid 1px #E3E4F1;
+}
+
+.listDiv .listItem img {
+    margin-left: auto;
+    height: 14px;
+    width: 14px;
+}
+
+.listDiv .listItem:hover {
+    cursor: pointer;
+}
+
+.listDiv .checkbox {
+    position: absolute;
+    top: -100px;
+    left: -100px;
+}
+
+.listDiv .roundCheckbox {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: solid 1px #E3E4F1;
+    margin-right: 20px;
+}
+
+.listDiv .roundCheckbox:hover {
+    cursor: pointer;
+}
+
+.btnDiv {
+    background-color: #fff;
+    width: 540px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+}
+
+.btnDiv button {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.btnDiv button:hover {
+    color: hsl(220, 98%, 61%);
+}
+
+.btnDiv button:first-of-type {
+    font-size: 14px;
+}
+
+.btnDiv button:last-of-type {
+    font-size: 14px;
+}
+
+.dragParagraph {
+    color: #333;
+    margin-top: 40px;
+    text-align: center;
+}
