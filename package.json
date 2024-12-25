@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node api/server.js"
+    "dev": "json-server --watch db.json --port 3000"
   },
   "keywords": [],
   "author": "",
