@@ -1,6 +1,6 @@
 async function fetchTasks() {
     try {
-        const response = await fetch("http://localhost:3000/tasks");
+        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -55,7 +55,7 @@ function createTaskElement(task) {
 fetchTasks();
 
 async function addTask(task) {
-    let response = await fetch("http://localhost:3000/tasks", {
+    let response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -89,7 +89,7 @@ input.addEventListener("keydown", function (e) {
 });
 
 async function deleteTask(id) {
-    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
         method: "DELETE"
     });
 
@@ -98,7 +98,7 @@ async function deleteTask(id) {
 }
 
 async function updateTask(id, task) {
-    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
