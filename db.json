@@ -28,17 +28,7 @@
     {
       "id": "daf2",
       "title": "Complete This Todo App Tonight",
-      "completed": false
-    },
-    {
-      "id": "449f",
-      "title": "Hello World!",
-      "completed": false
-    },
-    {
-      "id": "3fd8",
-      "title": "Test",
-      "completed": false
+      "completed": true
     },
     {
       "id": "1d4b",
