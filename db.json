@@ -16,9 +16,24 @@
       "completed": true
     },
     {
-      "id": "4",
-      "title": "Learn React",
-      "completed": true
+      "id": "ebfa",
+      "title": "Complete Sigma JS Part",
+      "completed": false
+    },
+    {
+      "id": "37e1",
+      "title": "Submit NutriWeb Information Form",
+      "completed": false
+    },
+    {
+      "id": "daf2",
+      "title": "Complete This Todo App Tonight",
+      "completed": false
+    },
+    {
+      "id": "449f",
+      "title": "Hello World!",
+      "completed": false
     }
   ]
 }

@@ -7,6 +7,7 @@ async function fetchTasks() {
 
         const tasks = await response.json();
         const todoTaskUl = document.getElementById("list");
+        todoTaskUl.innerHTML = ""; // Clear the existing list
 
         tasks.forEach((task) => {
             const todoTaskLi = createTaskElement(task);
@@ -62,9 +63,30 @@ async function addTask(task) {
         body: JSON.stringify(task)
     });
 
-    let data = await response.json();
-    console.log(data);
+    // Refresh the list to include the new task
+    fetchTasks();
 }
+
+let input = document.getElementById("input");
+input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        let taskTitle = input.value.trim(); // Trim to remove extra spaces
+        if (taskTitle === "") {
+            alert("Task cannot be empty!");
+            return;
+        }
+
+        let task = {
+            title: taskTitle,
+            completed: false
+        };
+
+        addTask(task);
+        input.value = "";
+    }
+});
 
 async function deleteTask(id) {
     let response = await fetch(`http://localhost:3000/tasks/${id}`, {
