@@ -116,6 +116,10 @@ body {
     cursor: pointer;
 }
 
+.lineThrough {
+    text-decoration: line-through;
+}
+
 .btnDiv {
     background-color: #fff;
     width: 540px;
