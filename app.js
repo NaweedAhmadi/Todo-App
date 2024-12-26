@@ -39,6 +39,10 @@ async function fetchTasks() {
                 deleteTask(task.id);
             });
 
+            // Update the total tasks count 
+            let totalTasks = document.getElementById("totalTasks");
+            totalTasks.innerText = document.getElementsByClassName("listItem").length;
+
         });
     } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -110,3 +114,130 @@ async function updateTask(id, task) {
         body: JSON.stringify(task)
     });
 }
+
+// Event listeners for the filter buttons
+let allTasks = document.getElementById("allTasks");
+allTasks.addEventListener("click", function () {
+    fetchTasks();
+});
+
+let activeTasks = document.getElementById("activeTasks");
+activeTasks.addEventListener("click", async function () {
+    try {
+        const response = await fetch("http://localhost:3000/tasks?completed=false");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch tasks: ${response.statusText}`);
+        }
+
+        const tasks = await response.json();
+        const todoTaskUl = document.getElementById("list");
+        todoTaskUl.innerHTML = ""; // Clear the existing list
+
+        tasks.forEach((task) => {
+            const todoTaskLi = createTaskElement(task);
+            todoTaskUl.appendChild(todoTaskLi);
+
+            // Add event listener directly to the created checkbox
+            const roundCheckbox = todoTaskLi.querySelector(".roundCheckbox");
+            const taskText = todoTaskLi.querySelector(".text");
+
+            roundCheckbox.addEventListener("click", function () {
+                // Toggle the 'checked' class
+                roundCheckbox.classList.toggle("checked");
+                taskText.classList.toggle("lineThrough");
+
+                // Determine the completed status based on the presence of the 'checked' class
+                const isChecked = roundCheckbox.classList.contains("checked");
+
+                // Update the task with the new completed value
+                updateTask(task.id, {
+                    id: task.id,
+                    title: task.title,
+                    completed: isChecked // true if checked, false if not
+                });
+            });
+
+            // Add event listener to the delete button
+            const deleteBtn = todoTaskLi.querySelector(".delete");
+            deleteBtn.addEventListener("click", function () {
+                deleteTask(task.id);
+            });
+
+            // Update the total tasks count 
+            let totalTasks = document.getElementById("totalTasks");
+            totalTasks.innerText = document.getElementsByClassName("listItem").length;
+
+        });
+    } catch (error) {
+        console.error("Error fetching tasks:", error);
+    }
+});
+
+let completedTasks = document.getElementById("completedTasks");
+completedTasks.addEventListener("click", async function () {
+    try {
+        const response = await fetch("http://localhost:3000/tasks?completed=true");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch tasks: ${response.statusText}`);
+        }
+
+        const tasks = await response.json();
+        const todoTaskUl = document.getElementById("list");
+        todoTaskUl.innerHTML = ""; // Clear the existing list
+
+        tasks.forEach((task) => {
+            const todoTaskLi = createTaskElement(task);
+            todoTaskUl.appendChild(todoTaskLi);
+
+            // Add event listener directly to the created checkbox
+            const roundCheckbox = todoTaskLi.querySelector(".roundCheckbox");
+            const taskText = todoTaskLi.querySelector(".text");
+
+            roundCheckbox.addEventListener("click", function () {
+                // Toggle the 'checked' class
+                roundCheckbox.classList.toggle("checked");
+                taskText.classList.toggle("lineThrough");
+
+                // Determine the completed status based on the presence of the 'checked' class
+                const isChecked = roundCheckbox.classList.contains("checked");
+
+                // Update the task with the new completed value
+                updateTask(task.id, {
+                    id: task.id,
+                    title: task.title,
+                    completed: isChecked // true if checked, false if not
+                });
+            });
+
+            // Add event listener to the delete button
+            const deleteBtn = todoTaskLi.querySelector(".delete");
+            deleteBtn.addEventListener("click", function () {
+                deleteTask(task.id);
+            });
+
+            // Update the total tasks count 
+            let totalTasks = document.getElementById("totalTasks");
+            totalTasks.innerText = document.getElementsByClassName("listItem").length;
+
+        });
+    } catch (error) {
+        console.error("Error fetching tasks:", error);
+    }
+});
+
+let clearCompleted = document.getElementById("clearCompleted");
+clearCompleted.addEventListener("click", async function () {
+    try {
+        const response = await fetch("http://localhost:3000/tasks?completed=true");
+        if (!response.ok) {
+            throw new Error(`Failed to fetch tasks: ${response.statusText}`);
+        }
+
+        const tasks = await response.json();
+        tasks.forEach((task) => {
+            deleteTask(task.id);
+        });
+    } catch (error) {
+        console.error("Error fetching tasks:", error);
+    }
+});
