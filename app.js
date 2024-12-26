@@ -57,7 +57,7 @@ function createTaskElement(task) {
         <input type="checkbox" id="checkbox${task.id}" class="checkbox">
         <label for="checkbox${task.id}" class="roundCheckbox ${task.completed ? 'checked' : ''}"></label>
         <p class="text ${task.completed ? 'lineThrough' : ''}">${task.title}</p>
-        <img src="./images/icon-cross.svg" alt="cross" class="cross delete">`;
+        <img src="./images/icon-cross.svg" alt="cross" class="delete">`;
     return todoTaskLi;
 }
 
@@ -240,4 +240,22 @@ clearCompleted.addEventListener("click", async function () {
     } catch (error) {
         console.error("Error fetching tasks:", error);
     }
+});
+
+allTasks.addEventListener("click", function () {
+    allTasks.classList.add("active");
+    activeTasks.classList.remove("active");
+    completedTasks.classList.remove("active");
+});
+
+activeTasks.addEventListener("click", function () {
+    allTasks.classList.remove("active");
+    activeTasks.classList.add("active");
+    completedTasks.classList.remove("active");
+});
+
+completedTasks.addEventListener("click", function () {
+    allTasks.classList.remove("active");
+    activeTasks.classList.remove("active");
+    completedTasks.classList.add("active");
 });

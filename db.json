@@ -1,28 +1,18 @@
 {
   "tasks": [
     {
-      "id": "2a2b",
-      "title": "Learn JSON Server",
+      "id": "3a73",
+      "title": "Attend AI Webinar on Friday",
       "completed": true
     },
     {
-      "id": "814b",
-      "title": "Deploy this app to Vercel",
+      "id": "d681",
+      "title": "Reserve Google Cloud Next Conference Hotel",
       "completed": false
     },
     {
-      "id": "47e4",
-      "title": "Complete Advanced JS Notes",
-      "completed": false
-    },
-    {
-      "id": "912c",
-      "title": "Attend AI Webinar on Friday",
-      "completed": false
-    },
-    {
-      "id": "0791",
-      "title": "dbjson Open Source Project",
+      "id": "df3e",
+      "title": "Learn JSON Server",
       "completed": false
     }
   ]
