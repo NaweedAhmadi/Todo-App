@@ -1,6 +1,6 @@
 async function fetchTasks() {
     try {
-        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks");
+        const response = await fetch("http://localhost:3000/tasks");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -33,6 +33,12 @@ async function fetchTasks() {
                 });
             });
 
+            // Add event listener to the delete button
+            const deleteBtn = todoTaskLi.querySelector(".delete");
+            deleteBtn.addEventListener("click", function () {
+                deleteTask(task.id);
+            });
+
         });
     } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -47,7 +53,7 @@ function createTaskElement(task) {
         <input type="checkbox" id="checkbox${task.id}" class="checkbox">
         <label for="checkbox${task.id}" class="roundCheckbox ${task.completed ? 'checked' : ''}"></label>
         <p class="text ${task.completed ? 'lineThrough' : ''}">${task.title}</p>
-        <img src="./images/icon-cross.svg" alt="cross" class="cross">`;
+        <img src="./images/icon-cross.svg" alt="cross" class="cross delete">`;
     return todoTaskLi;
 }
 
@@ -55,7 +61,7 @@ function createTaskElement(task) {
 fetchTasks();
 
 async function addTask(task) {
-    let response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks", {
+    let response = await fetch("http://localhost:3000/tasks", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -89,16 +95,14 @@ input.addEventListener("keydown", function (e) {
 });
 
 async function deleteTask(id) {
-    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
+    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
         method: "DELETE"
     });
-
-    let data = await response.json();
-    console.log(data);
+    fetchTasks(); // Refresh the task list after deletion
 }
 
 async function updateTask(id, task) {
-    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
+    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
