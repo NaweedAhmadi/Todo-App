@@ -53,11 +53,22 @@ async function fetchTasks() {
 function createTaskElement(task) {
     const todoTaskLi = document.createElement("li");
     todoTaskLi.classList.add("listItem");
+    todoTaskLi.setAttribute("draggable", "true"); // Make the task draggable
     todoTaskLi.innerHTML = `
         <input type="checkbox" id="checkbox${task.id}" class="checkbox">
         <label for="checkbox${task.id}" class="roundCheckbox ${task.completed ? 'checked' : ''}"></label>
         <p class="text ${task.completed ? 'lineThrough' : ''}">${task.title}</p>
         <img src="./images/icon-cross.svg" alt="cross" class="delete">`;
+
+    // Add drag-and-drop events
+    todoTaskLi.addEventListener("dragstart", () => {
+        todoTaskLi.classList.add("dragging"); // Add a class while dragging
+    });
+
+    todoTaskLi.addEventListener("dragend", () => {
+        todoTaskLi.classList.remove("dragging"); // Remove the class when dragging ends
+    });
+
     return todoTaskLi;
 }
 
@@ -278,3 +289,44 @@ darkmode.addEventListener("click", function () {
     // Toggle the "active" class on the img element
     darkmode.classList.toggle("active");
 });
+
+// Drag-and-drop functionality
+let draggedTask;
+
+document.addEventListener("dragstart", function (event) {
+    if (event.target.classList.contains("listItem")) {
+        draggedTask = event.target;
+    }
+});
+
+document.addEventListener("dragover", function (event) {
+    event.preventDefault();
+});
+
+document.addEventListener("drop", function (event) {
+    if (event.target.classList.contains("listItem")) {
+        const afterElement = getDragAfterElement(event.clientY);
+        const parent = event.target.parentNode;
+
+        if (afterElement == null) {
+            parent.appendChild(draggedTask);
+        } else {
+            parent.insertBefore(draggedTask, afterElement);
+        }
+    }
+});
+
+function getDragAfterElement(y) {
+    const draggableElements = [...document.querySelectorAll(".listItem:not(.dragging)")];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+}

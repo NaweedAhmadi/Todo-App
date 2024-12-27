@@ -188,6 +188,11 @@
     text-align: center;
 }
 
+.dragging {
+    opacity: 0.5;
+    background-color: #ddd;
+}
+
 /* Darkmode */
 
 .darkmode {
