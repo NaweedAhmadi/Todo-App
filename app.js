@@ -1,6 +1,6 @@
 async function fetchTasks() {
     try {
-        const response = await fetch("http://localhost:3000/tasks");
+        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -65,7 +65,7 @@ function createTaskElement(task) {
 fetchTasks();
 
 async function addTask(task) {
-    let response = await fetch("http://localhost:3000/tasks", {
+    let response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -99,14 +99,14 @@ input.addEventListener("keydown", function (e) {
 });
 
 async function deleteTask(id) {
-    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
         method: "DELETE"
     });
     fetchTasks(); // Refresh the task list after deletion
 }
 
 async function updateTask(id, task) {
-    let response = await fetch(`http://localhost:3000/tasks/${id}`, {
+    let response = await fetch(`https://todo-app-nu-ebon.vercel.app/tasks/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -124,7 +124,7 @@ allTasks.addEventListener("click", function () {
 let activeTasks = document.getElementById("activeTasks");
 activeTasks.addEventListener("click", async function () {
     try {
-        const response = await fetch("http://localhost:3000/tasks?completed=false");
+        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks?completed=false");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -176,7 +176,7 @@ activeTasks.addEventListener("click", async function () {
 let completedTasks = document.getElementById("completedTasks");
 completedTasks.addEventListener("click", async function () {
     try {
-        const response = await fetch("http://localhost:3000/tasks?completed=true");
+        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks?completed=true");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -228,7 +228,7 @@ completedTasks.addEventListener("click", async function () {
 let clearCompleted = document.getElementById("clearCompleted");
 clearCompleted.addEventListener("click", async function () {
     try {
-        const response = await fetch("http://localhost:3000/tasks?completed=true");
+        const response = await fetch("https://todo-app-nu-ebon.vercel.app/tasks?completed=true");
         if (!response.ok) {
             throw new Error(`Failed to fetch tasks: ${response.statusText}`);
         }
@@ -258,4 +258,23 @@ completedTasks.addEventListener("click", function () {
     allTasks.classList.remove("active");
     activeTasks.classList.remove("active");
     completedTasks.classList.add("active");
+});
+
+let darkmode = document.querySelector(".moon"); // Select the image with the class "moon"
+
+darkmode.addEventListener("click", function () {
+    // Toggle the "dark" class on the body
+    document.body.classList.toggle("darkmode");
+    
+    // Change the src attribute based on the current class
+    if (darkmode.classList.contains("active")) {
+        darkmode.src = "./images/icon-moon.svg";  // Change to moon icon
+        darkmode.alt = "moon";  // Optionally update the alt text
+    } else {
+        darkmode.src = "./images/icon-sun.svg";  // Change to sun icon
+        darkmode.alt = "sun";  // Optionally update the alt text
+    }
+
+    // Toggle the "active" class on the img element
+    darkmode.classList.toggle("active");
 });

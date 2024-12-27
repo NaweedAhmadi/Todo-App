@@ -5,7 +5,7 @@
     font-family: Josefin Sans, sans-serif;
 }
 
-body {
+.body {
     background-image: url("./images/bg-desktop-light.jpg");
     background-repeat: no-repeat;
     display: flex;
@@ -24,6 +24,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.moon {
+    cursor: pointer;
 }
 
 .inputDiv {
@@ -79,13 +83,13 @@ body {
     width: 540px;
     border-radius: 5px;
     margin-top: 20px;
-    box-shadow: 6px 6px 20px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .listDiv .listItem {
     display: flex;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
     padding: 20px 24px;
     border-bottom: solid 1px #E3E4F1;
@@ -178,7 +182,155 @@ body {
 }
 
 .dragParagraph {
-    color: #333;
+    color: #9495A5;
+    font-size: 16px;
     margin-top: 40px;
     text-align: center;
+}
+
+/* Darkmode */
+
+.darkmode {
+    background-image: url("./images/bg-desktop-dark.jpg");
+    background-color: #171823;
+}
+
+.darkmode .inputDiv {
+    background-color: #25273D;
+}
+
+.darkmode .inputDiv #input {
+    background-color: #25273D;
+    color: #767992;
+}
+
+.darkmode .inputDiv #input:focus {
+    color: #C8CBE7;
+}
+
+.darkmode .inputDiv .roundCheckbox {
+    border: solid 1px #494C6B;
+}
+
+.darkmode .inputDiv .roundCheckbox:hover {
+    border: 2px solid transparent;
+    background: linear-gradient(#25273D, #25273D) padding-box,
+    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+}
+
+.darkmode .listDiv {
+    background-color: #25273D;
+    box-shadow: none;
+}
+
+.darkmode .listDiv .listItem {
+    color: #C8CBE7;
+    border-bottom: solid 1px #393A4B;
+}
+
+.darkmode .listDiv .roundCheckbox {
+    border: solid 1px #494C6B;
+}
+
+.darkmode .listDiv .roundCheckbox:hover {
+    border: 2px solid transparent;
+    background: linear-gradient(#25273D, #25273D) padding-box,
+    linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
+}
+
+.darkmode .listDiv .roundCheckbox.checked:hover {
+    background: url("./images/icon-check.svg"), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-position: center;
+    background-repeat: no-repeat;
+    border: hidden !important;
+}
+
+.darkmode .lineThrough {
+    color: #4D5067;
+}
+
+.darkmode .btnDiv {
+    background-color: #25273D;
+}
+
+.darkmode .btnDiv button {
+    background-color: #25273D;
+    color: #5B5E7E;
+}
+
+.darkmode .btnDiv button:hover {
+    color: #E3E4F1;
+}
+
+.darkmode .active {
+    color: hsl(220, 98%, 61%) !important;
+}
+
+.darkmode .filterDiv {
+    background-color: #25273D;
+    box-shadow: none;
+}
+
+.darkmode .dragParagraph {
+    color: #5B5E7E;
+}
+
+/* Media Queries */
+
+@media (max-width: 540px) {
+    .wrapperDiv {
+        position: relative;
+        width: 100%;
+        margin: 30px 20px;
+    }
+
+    .titleDiv {
+        width: 100%;
+    }
+
+    .inputDiv {
+        width: 100%;
+    }
+
+    .inputDiv #input {
+        width: 80%;
+    }
+
+    .listDiv {
+        width: 100%;
+    }
+
+    .text {
+        width: 80%;
+    }
+
+    .listDiv .listItem img {
+        height: 14px;
+        width: 14px;
+        display: inline;
+    }
+
+    .btnDiv {
+        width: 100%;
+    }
+
+    .filterDiv {
+        width: 100%;
+        height: 50px;
+        margin-left: -24px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        padding: 20px 24px;
+        position: absolute;
+        bottom: 65px;
+    }
+
+    .dragParagraph {
+        position: relative;
+        margin-top: 120px;
+    }
 }
