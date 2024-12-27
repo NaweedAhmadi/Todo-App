@@ -273,6 +273,17 @@ completedTasks.addEventListener("click", function () {
 
 let darkmode = document.querySelector(".moon"); // Select the image with the class "moon"
 
+// Load user preference from local storage
+if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("darkmode"); // Apply dark mode
+    darkmode.src = "./images/icon-sun.svg";  // Set to sun icon
+    darkmode.alt = "sun";
+    darkmode.classList.add("active");
+} else {
+    darkmode.src = "./images/icon-moon.svg"; // Set to moon icon
+    darkmode.alt = "moon";
+}
+
 darkmode.addEventListener("click", function () {
     // Toggle the "dark" class on the body
     document.body.classList.toggle("darkmode");
@@ -281,9 +292,11 @@ darkmode.addEventListener("click", function () {
     if (darkmode.classList.contains("active")) {
         darkmode.src = "./images/icon-moon.svg";  // Change to moon icon
         darkmode.alt = "moon";  // Optionally update the alt text
+        localStorage.setItem("darkMode", "disabled"); // Save preference
     } else {
         darkmode.src = "./images/icon-sun.svg";  // Change to sun icon
         darkmode.alt = "sun";  // Optionally update the alt text
+        localStorage.setItem("darkMode", "enabled"); // Save preference
     }
 
     // Toggle the "active" class on the img element

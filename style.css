@@ -8,6 +8,7 @@
 .body {
     background-image: url("./images/bg-desktop-light.jpg");
     background-repeat: no-repeat;
+    background-position: top center;
     display: flex;
     justify-content: center;
 }
